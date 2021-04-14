@@ -21,4 +21,8 @@ export class EmailhelperService {
   sendEmail(email: EmailDto): Observable<EmailDto> {
     return this.http.post<EmailDto>(HOSTNAME + 'feedback/send', email);
   }
+
+  sendEmailWithAttach(email: EmailDto): Observable<EmailDto> {
+    return this.http.post<EmailDto>(HOSTNAME + 'feedback/contract/send', email);
+  }
 }

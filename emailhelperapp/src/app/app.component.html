@@ -307,21 +307,21 @@
 <!-- Toolbar -->
 <p>
   <mat-toolbar color="accent">
-    <button mat-icon-button [matMenuTriggerFor]="mainMenu">
+    <button mat-icon-button [matMenuTriggerFor]="mainMenu" [disabled] = "!isLoggedIn">
       <mat-icon>menu</mat-icon>
     </button>
     <mat-menu #mainMenu="matMenu">
       <button mat-menu-item color="accent" *ngIf="isLoggedIn" (click)="logout()">
-              Logout
+              Delogare
       </button>
 </mat-menu>
-    <span>UniTBV</span>
+    <span>Universitatea „Transilvania” din Brașov</span>
     <span class="example-spacer"></span>
     <mat-button-toggle routerLink="login" *ngIf="!isLoggedIn" aria-label="Text align left">
-      Login
+      Logare
     </mat-button-toggle>
     <mat-button-toggle routerLink="register" *ngIf="!isLoggedIn" aria-label="Text align left">
-      Register
+      Înregistrare
     </mat-button-toggle>
   </mat-toolbar>
 </p>

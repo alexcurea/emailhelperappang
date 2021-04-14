@@ -2,10 +2,10 @@
   <div class="card card-container">
     <form [formGroup]="f" (submit)="saveUser()">
       <span>
-        <h3 >User Details</h3>
+        <h3 >Detaliile utilizatorului</h3>
       </span>
       <div class="form-group">
-          <label for="username">Username</label>
+          <label for="username">Utilizator</label>
           <input matInput #input formControlName="username" id="username" />
           <div class="alert-danger">
             <control-messages [control]="f.get('username')"></control-messages>
@@ -20,24 +20,24 @@
   
   </div>
   <div class="form-group">
-      <label for="password">Password</label>
+      <label for="password">Parolă</label>
       <input formControlName="password" id="password" type="password"/>
       <div class="alert-danger">
         <control-messages [control]="f.get('password')"></control-messages>
       </div>
   </div>
   <span>
-    <h3 >Candidate Details</h3>
+    <h3 >Detaliile candidatului</h3>
   </span>
   <div class="form-group">
-    <label for="firstName">First Name</label>
+    <label for="firstName">Nume</label>
     <input matInput #input formControlName="firstName" id="firstName" />
     <div class="alert-danger">
       <control-messages [control]="f.get('firstName')"></control-messages>
     </div>
   </div>
   <div class="form-group">
-    <label for="lastName">Last Name</label>
+    <label for="lastName">Prenume</label>
     <input matInput #input formControlName="lastName" id="lastName" />
     <div class="alert-danger">
       <control-messages [control]="f.get('lastName')"></control-messages>
@@ -45,7 +45,7 @@
   </div>
   
   <div class="form-group">
-    <label for="birthDate">Birth Date</label>
+    <label for="birthDate">Data nașterii</label>
     <input matInput #input formControlName="birthDate" id="birthDate" 
     [min]="minDate" 
     [max]="maxDate" 
@@ -57,32 +57,32 @@
     </div>
   </div>
   <div class="form-group">
-    <label for="city">City</label>
+    <label for="city">Oraș</label>
     <input matInput #input formControlName="city" id="city" />
     <div class="alert-danger">
       <control-messages [control]="f.get('city')"></control-messages>
     </div>
   </div>
   <div class="form-group">
-    <label for="country">Country</label>
+    <label for="country">Țară</label>
     <input matInput #input formControlName="country" id="country" />
     <div class="alert-danger">
       <control-messages [control]="f.get('country')"></control-messages>
     </div>
   </div>
   <div class="form-group">
-    <label for="phoneNumber">Phone number</label>
+    <label for="phoneNumber">Număr de telefon</label>
     <input matInput #input formControlName="phoneNumber" id="phoneNumber" />
     <div class="alert-danger">
       <control-messages [control]="f.get('phoneNumber')"></control-messages>
     </div>
   </div>
       <div class="form-group">
-        <button class="btn btn-primary btn-block" type="submit" [disabled]="!f.valid">Sign Up</button>
+        <button class="btn btn-primary btn-block" type="submit" [disabled]="!f.valid">Înregistrare</button>
       </div>
   
       <div class="alert alert-warning" *ngIf="f.submitted && isSignUpFailed">
-        Signup failed!<br />{{ errorMessage }}
+        Înregistrare eșuată!<br />{{ errorMessage }}
       </div>
     
     </form>
@@ -214,6 +214,6 @@
       </form>
    -->
       <div class="alert alert-success" *ngIf="isSuccessful">
-        Your registration is successful!
+        Înregistrare reușită!
       </div>
     </div>
