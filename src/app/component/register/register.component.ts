@@ -313,7 +313,7 @@ const emailContent : string = `<!doctype html>
     </style>
   </head>
   <body class="">
-    <span class="preheader">This is preheader text. Some clients will show this text as a preview.</span>
+    <span class="preheader">Învață să fii în centru!</span>
     <table role="presentation" border="0" cellpadding="0" cellspacing="0" class="body">
       <tr>
         <td>&nbsp;</td>
@@ -410,6 +410,7 @@ export class RegisterComponent implements OnInit {
   isSuccessful = false;
   isSignUpFailed = false;
   errorMessage = '';
+  isSubscribed: boolean = false;
 
   constructor(private authService: AuthService, private candidateService: CandidateService, private fb: FormBuilder, private emailHelperService: EmailhelperService) {
     this.createForm();
@@ -447,8 +448,17 @@ export class RegisterComponent implements OnInit {
       city: ['', [Validators.required]],
       country: ['', [Validators.required]],
       phoneNumber: ['', [Validators.required, Validators.maxLength(10)]],
-      email: ['', [Validators.required, ValidationService.emailValidator]]
+      email: ['', [Validators.required, ValidationService.emailValidator]],
+      isSubscribed: true
     });
+   }
+
+   changeValue(value){
+    
+    console.log('value:'+value);
+    this.isSubscribed = !value;
+    console.log('newvalue:'+this.isSubscribed);
+
    }
    
    getErrorMessage() {
@@ -471,9 +481,11 @@ export class RegisterComponent implements OnInit {
         city: this.f.value.city,
         country: this.f.value.country,
         phoneNumber: this.f.value.phoneNumber,
-        email: this.f.value.email
+        email: this.f.value.email,
+        isSubscribed: this.isSubscribed
       });
       
+      console.log(this.candidateForm.controls['isSubscribed'].value);
       this.authService.register(this.userForm.value).subscribe(
         data => {
           console.log(data);

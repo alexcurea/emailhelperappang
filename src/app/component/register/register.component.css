@@ -57,3 +57,8 @@ label {
     height: 130%;
     background-repeat: no-repeat;
   }
+
+  .checkbox {
+    color: black!important;
+    background-color: black!important;
+  }
