@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { Store } from '@ngxs/store';
-import { SetCurrentUser } from 'src/app/actions/user.actions';
 import { EmailhelperService } from 'src/app/service/emailhelper.service';
 import { AuthService } from '../../service/auth.service';
 import { TokenStorageService } from '../../service/token-storage.service';
@@ -20,7 +20,11 @@ export class LoginComponent implements OnInit {
   errorMessage = '';
   roles: string[] = [];
 
-  constructor(private authService: AuthService, private tokenStorage: TokenStorageService, private store:Store, private emailHelperService: EmailhelperService) { }
+  constructor(private authService: AuthService, 
+    private tokenStorage: TokenStorageService, 
+    private store:Store, 
+    private emailHelperService: EmailhelperService,
+    private router: Router) { }
 
   ngOnInit(): void {
     if (this.tokenStorage.getToken()) {
@@ -36,11 +40,20 @@ export class LoginComponent implements OnInit {
       data => {
         this.tokenStorage.saveToken(data.accessToken);
         this.tokenStorage.saveUser(data);
-        this.store.dispatch(new SetCurrentUser(data.username));
         this.isLoginFailed = false;
         this.isLoggedIn = true;
         this.roles = this.tokenStorage.getUser().roles;
-        this.reloadPage();
+        setTimeout(() => {
+          if(this.roles.includes('ROLE_ADMIN')){
+            this.router.navigate(['/newsletter']);
+          }
+          else{
+            this.router.navigate(['/home']);
+          }
+      }, 2000);
+        setTimeout(() => {
+          this.reloadPage();
+      }, 3000);
       },
       err => {
         this.errorMessage = err.error.message;

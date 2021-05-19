@@ -50,6 +50,10 @@ label {
     flex-grow: 1;
   }
 
+  .form-group {
+    min-width: 300px;
+  }
+
   .col-md-12 {
     background-image: url("../../../assets/images/register.jpg");
     background-size: 100% 100%;
@@ -58,7 +62,21 @@ label {
     background-repeat: no-repeat;
   }
 
+<<<<<<< HEAD
   .checkbox {
     color: black!important;
     background-color: black!important;
   }
+=======
+  ::ng-deep .mat-checkbox .mat-checkbox-frame{
+    border-color: black !important;
+  }
+
+  ::ng-deep .mat-datepicker-toggle{
+    color:black !important;
+  }
+
+
+
+  
+>>>>>>> parent of 3e40d31 (Revert "newletters")

@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { CandidateStatus } from 'src/app/model/enum/candidate-status.enum';
 import { AuthService } from '../../service/auth.service';
 import { CandidateService } from './../../service/candidate.service';
@@ -7,6 +7,7 @@ import { ValidationService } from 'src/app/service/validation.service';
 import { User } from 'src/app/model/user';
 import { EmailhelperService } from 'src/app/service/emailhelper.service';
 import { EmailDto } from 'src/app/model/emaildto';
+import { MatCheckbox } from '@angular/material/checkbox';
 
 const emailContent : string = `<!doctype html>
 <html>
@@ -411,6 +412,11 @@ export class RegisterComponent implements OnInit {
   isSignUpFailed = false;
   errorMessage = '';
   isSubscribed: boolean = false;
+<<<<<<< HEAD
+=======
+  @ViewChild("checkbox", { static: true }) 
+  public checkbox: MatCheckbox;
+>>>>>>> parent of 3e40d31 (Revert "newletters")
 
   constructor(private authService: AuthService, private candidateService: CandidateService, private fb: FormBuilder, private emailHelperService: EmailhelperService) {
     this.createForm();
@@ -482,7 +488,11 @@ export class RegisterComponent implements OnInit {
         country: this.f.value.country,
         phoneNumber: this.f.value.phoneNumber,
         email: this.f.value.email,
+<<<<<<< HEAD
         isSubscribed: this.isSubscribed
+=======
+        isSubscribed: this.checkbox.checked
+>>>>>>> parent of 3e40d31 (Revert "newletters")
       });
       
       console.log(this.candidateForm.controls['isSubscribed'].value);
