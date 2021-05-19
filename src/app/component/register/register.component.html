@@ -6,14 +6,14 @@
       </span>
       <div class="form-group">
           <label for="username">Utilizator</label>
-          <input class="form-group" matInput #input formControlName="username" id="username" />
+          <input matInput #input formControlName="username" id="username" />
           <div class="alert-danger">
             <control-messages [control]="f.get('username')"></control-messages>
           </div>
     </div>
     <div class="form-group">
         <label for="email">Email</label>
-        <input class="form-group" matInput #input formControlName="email" id="email" />
+        <input matInput #input formControlName="email" id="email" />
         <div class="alert-danger">
           <control-messages [control]="f.get('email')"></control-messages>
         </div>
@@ -21,7 +21,7 @@
   </div>
   <div class="form-group">
       <label for="password">Parolă</label>
-      <input class="form-group" formControlName="password" id="password" type="password"/>
+      <input formControlName="password" id="password" type="password"/>
       <div class="alert-danger">
         <control-messages [control]="f.get('password')"></control-messages>
       </div>
@@ -31,56 +31,51 @@
   </span>
   <div class="form-group">
     <label for="firstName">Nume</label>
-    <input class="form-group" matInput #input formControlName="firstName" id="firstName" />
+    <input matInput #input formControlName="firstName" id="firstName" />
     <div class="alert-danger">
       <control-messages [control]="f.get('firstName')"></control-messages>
     </div>
   </div>
   <div class="form-group">
     <label for="lastName">Prenume</label>
-    <input class="form-group" matInput #input formControlName="lastName" id="lastName" />
+    <input matInput #input formControlName="lastName" id="lastName" />
     <div class="alert-danger">
       <control-messages [control]="f.get('lastName')"></control-messages>
     </div>
   </div>
   
   <div class="form-group">
-    <label for="birthDate" style="display: inline-block;">Data nașterii</label>
-    <mat-datepicker-toggle color="secondary" matSuffix [for]="picker"></mat-datepicker-toggle>
-    <mat-datepicker #picker></mat-datepicker>
-    <input class="form-group" matInput #input formControlName="birthDate" id="birthDate" 
+    <label for="birthDate">Data nașterii</label>
+    <input matInput #input formControlName="birthDate" id="birthDate" 
     [min]="minDate" 
     [max]="maxDate" 
     [matDatepicker]="picker"/>
+    <mat-datepicker-toggle color="secondary" matSuffix [for]="picker"></mat-datepicker-toggle>
+    <mat-datepicker #picker></mat-datepicker>
     <div class="alert-danger">
       <control-messages [control]="f.get('birthDate')"></control-messages>
     </div>
   </div>
   <div class="form-group">
     <label for="city">Oraș</label>
-    <input class="form-group" matInput #input formControlName="city" id="city" />
+    <input matInput #input formControlName="city" id="city" />
     <div class="alert-danger">
       <control-messages [control]="f.get('city')"></control-messages>
     </div>
   </div>
   <div class="form-group">
     <label for="country">Țară</label>
-    <input class="form-group" matInput #input formControlName="country" id="country" />
+    <input matInput #input formControlName="country" id="country" />
     <div class="alert-danger">
       <control-messages [control]="f.get('country')"></control-messages>
     </div>
   </div>
   <div class="form-group">
     <label for="phoneNumber">Număr de telefon</label>
-    <input class="form-group" matInput #input formControlName="phoneNumber" id="phoneNumber" />
+    <input matInput #input formControlName="phoneNumber" id="phoneNumber" />
     <div class="alert-danger">
       <control-messages [control]="f.get('phoneNumber')"></control-messages>
     </div>
-  </div>
-  <div class="form-group">
-    <mat-checkbox class="checkbox" #checkbox>
-      Doresc să fiu abonat la newsletterul UniTBV!
-    </mat-checkbox>
   </div>
       <div class="form-group">
         <button class="btn btn-primary btn-block" type="submit" [disabled]="!f.valid">Înregistrare</button>
@@ -88,9 +83,6 @@
   
       <div class="alert alert-warning" *ngIf="f.submitted && isSignUpFailed">
         Înregistrare eșuată!<br />{{ errorMessage }}
-      </div>
-      <div class="alert alert-success" *ngIf="isSuccessful">
-        Înregistrare reușită!
       </div>
     
     </form>
@@ -221,5 +213,7 @@
         </div>
       </form>
    -->
-
+      <div class="alert alert-success" *ngIf="isSuccessful">
+      Înregistrare reușită!
+      </div>
     </div>

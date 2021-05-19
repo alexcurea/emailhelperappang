@@ -45,16 +45,5 @@ export class CandidateService {
      let params = new HttpParams().set("id", paramId);
      return this.http.delete<Candidate>(HOSTNAME + 'candidate/delete', {params:params});
    }
-
-   getCandidate(email: String){
-    return this.http.get<Candidate>(HOSTNAME + 'candidate/' + email);
-  }
-
-  subscribe(email: String,  subscription: boolean){
-    let paramEmail = String(email);
-    let paramSubscription = String(subscription);
-    let params = new HttpParams().set("email", paramEmail).set("subscribtion", paramSubscription);
-    return this.http.delete(HOSTNAME + 'candidate/subscribe', {params:params});
-  }
    
 }

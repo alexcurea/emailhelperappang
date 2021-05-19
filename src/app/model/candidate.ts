@@ -10,5 +10,4 @@ export class Candidate {
     public country : string;
     public phoneNumber : string;
     public email : string;
-    public isSubscribed : boolean;
 }

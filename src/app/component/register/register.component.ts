@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { CandidateStatus } from 'src/app/model/enum/candidate-status.enum';
 import { AuthService } from '../../service/auth.service';
 import { CandidateService } from './../../service/candidate.service';
@@ -7,7 +7,6 @@ import { ValidationService } from 'src/app/service/validation.service';
 import { User } from 'src/app/model/user';
 import { EmailhelperService } from 'src/app/service/emailhelper.service';
 import { EmailDto } from 'src/app/model/emaildto';
-import { MatCheckbox } from '@angular/material/checkbox';
 
 const emailContent : string = `<!doctype html>
 <html>
@@ -314,7 +313,7 @@ const emailContent : string = `<!doctype html>
     </style>
   </head>
   <body class="">
-    <span class="preheader">Învață să fii în centru!</span>
+    <span class="preheader">This is preheader text. Some clients will show this text as a preview.</span>
     <table role="presentation" border="0" cellpadding="0" cellspacing="0" class="body">
       <tr>
         <td>&nbsp;</td>
@@ -411,9 +410,6 @@ export class RegisterComponent implements OnInit {
   isSuccessful = false;
   isSignUpFailed = false;
   errorMessage = '';
-  isSubscribed: boolean = false;
-  @ViewChild("checkbox", { static: true }) 
-  public checkbox: MatCheckbox;
 
   constructor(private authService: AuthService, private candidateService: CandidateService, private fb: FormBuilder, private emailHelperService: EmailhelperService) {
     this.createForm();
@@ -451,17 +447,8 @@ export class RegisterComponent implements OnInit {
       city: ['', [Validators.required]],
       country: ['', [Validators.required]],
       phoneNumber: ['', [Validators.required, Validators.maxLength(10)]],
-      email: ['', [Validators.required, ValidationService.emailValidator]],
-      isSubscribed: true
+      email: ['', [Validators.required, ValidationService.emailValidator]]
     });
-   }
-
-   changeValue(value){
-    
-    console.log('value:'+value);
-    this.isSubscribed = !value;
-    console.log('newvalue:'+this.isSubscribed);
-
    }
    
    getErrorMessage() {
@@ -484,11 +471,9 @@ export class RegisterComponent implements OnInit {
         city: this.f.value.city,
         country: this.f.value.country,
         phoneNumber: this.f.value.phoneNumber,
-        email: this.f.value.email,
-        isSubscribed: this.checkbox.checked
+        email: this.f.value.email
       });
       
-      console.log(this.candidateForm.controls['isSubscribed'].value);
       this.authService.register(this.userForm.value).subscribe(
         data => {
           console.log(data);

@@ -2,8 +2,9 @@ import { Component } from '@angular/core';
 import { FormControl } from '@angular/forms';
 import { Router } from '@angular/router';
 import { User } from './model/user';
+import { AuthenticationService } from './service/authentication.service';
 import { TokenStorageService } from './service/token-storage.service';
-import { CandidateService } from './service/candidate.service';
+import { UserService } from './service/users.service';
 
 @Component({
   selector: 'app-root',
@@ -16,16 +17,12 @@ export class AppComponent {
   currentView: FormControl = new FormControl;
   private roles: string[] = [];
   isLoggedIn = false;
-  showUserBoard = false;
   showAdminBoard = false;
   showModeratorBoard = false;
   username?: string;
-  email?: string;
-  isSubscribed = false;
   
-  constructor(private router: Router,
-    private tokenStorageService: TokenStorageService,
-    private candidateService: CandidateService) {}
+  constructor(private router: Router, private authenticationService: AuthenticationService,
+    private tokenStorageService: TokenStorageService) {}
   ngOnInit(): void {
     this.isLoggedIn = !!this.tokenStorageService.getToken();
 
@@ -35,33 +32,22 @@ export class AppComponent {
 
       this.showAdminBoard = this.roles.includes('ROLE_ADMIN');
       this.showModeratorBoard = this.roles.includes('ROLE_MODERATOR');
-      this.showUserBoard = this.roles.includes('ROLE_USER');
 
       this.username = user.username;
-      this.email = user.email;
-      if(this.showUserBoard){
-        this.candidateService.getCandidate(this.email).subscribe(
-          data => {
-            if(data.isSubscribed){
-              this.isSubscribed = data.isSubscribed;
-            }
-          }
-        );
-      }
     }
+  }
+
+  onChanges(): void {
+    this.currentView.valueChanges.subscribe(formVal => {
+      console.log(formVal);
+      this.router.navigateByUrl(formVal);
+    });
   }
 
   logout(): void {
     this.tokenStorageService.signOut();
     window.location.reload();
   }
-
-  subscribe(value){
-    this.isSubscribed=!value;
-    this.candidateService.subscribe(this.email, !value).subscribe(()=>{
-      console.log('succes!');
-    })
-  };
 
 }
 
