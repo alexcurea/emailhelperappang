@@ -5,6 +5,7 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatButtonModule } from '@angular/material/button';
 import { MatButtonToggleModule } from '@angular/material/button-toggle';
 import { MatDatepickerModule } from '@angular/material/datepicker';
+import { MatCheckboxModule } from '@angular/material/checkbox';
 import { MatNativeDateModule } from '@angular/material/core';
 import { MatInputModule } from '@angular/material/input';
 import { MatMenuModule } from '@angular/material/menu';
@@ -71,6 +72,7 @@ import { UsersListComponent } from './component/users-list/users-list.component'
     MatButtonToggleModule,
     MatDatepickerModule,
     MatFormFieldModule,
+    MatCheckboxModule,
     MatInputModule,
     MatNativeDateModule,
     HttpClientModule,

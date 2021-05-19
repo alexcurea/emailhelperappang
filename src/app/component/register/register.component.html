@@ -77,6 +77,11 @@
       <control-messages [control]="f.get('phoneNumber')"></control-messages>
     </div>
   </div>
+  <div class="form-group">
+    <mat-checkbox class="checkbox" value="isSubscribed" (click)="changeValue(isSubscribed)">
+      Doresc să fiu abonat la newsletterul UniTBV!
+    </mat-checkbox>
+  </div>
       <div class="form-group">
         <button class="btn btn-primary btn-block" type="submit" [disabled]="!f.valid">Înregistrare</button>
       </div>
