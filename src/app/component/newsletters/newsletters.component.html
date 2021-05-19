@@ -1,0 +1,58 @@
+<div class="main-container">
+    <div class="newsletters-list">
+        <ng-container class="full-width" *ngIf="newsletters?.length != 0; else noNewsletters">
+            <mat-accordion class="full-width">
+                <table class="full-width">
+                    <tbody class="full-width">
+                        <cdk-virtual-scroll-viewport itemSize="50" class="viewport" minBufferPx="0" maxBufferPx="0">
+                            <tr class="item" *ngFor="let newsletter of newsletters">
+                                <div class="expansion-panel">
+                                    <mat-expansion-panel class="full-width"
+                                    hideToggle>
+                                        <mat-expansion-panel-header class="right-aligned-header">
+                                          <mat-panel-title>
+                                            {{newsletter.title}}
+                                          </mat-panel-title>
+                                          <mat-panel-description>
+                                            by {{newsletter.publisher}}@{{newsletter.timestamp | date:'HH:mm , dd.LL.yyyy'}}
+                                          </mat-panel-description>
+                                        </mat-expansion-panel-header>
+                                        <div style="white-space: pre-wrap;">
+                                            {{getContent(newsletter.content)}}
+                                        </div>
+                                      </mat-expansion-panel>
+                                </div>
+                            </tr>
+                        </cdk-virtual-scroll-viewport>
+                        
+                    </tbody>
+                </table>
+            </mat-accordion>
+        </ng-container>
+        <ng-template #noNewsletters>
+            <p class="empty-list">Currently there are no newsletters.</p>
+        </ng-template>
+    </div>
+    <div class="newsletter-left">
+        <form [formGroup]="newsletterForm" class="form">
+            <h2 class="header">Publică un nou newsletter:</h2>
+            <mat-form-field appearance="outline" class="title-form">
+                <mat-label>Titlu</mat-label>
+                <input matInput formControlName="title" >
+                <mat-error *ngIf="newsletterForm.get('title').hasError('required')">
+                    Titlul este <strong>obligatoriu</strong>
+                </mat-error>
+            </mat-form-field>
+            <mat-form-field appearance="outline" class="content-form">
+                <mat-label>Conținut</mat-label>
+                <textarea matInput autocomplete="off" class="text-area" formControlName="content"></textarea>
+                <mat-error *ngIf="newsletterForm.get('content').hasError('required')">
+                    Conținutul este <strong>obligatoriu</strong>
+                </mat-error>
+            </mat-form-field>
+            <div class="button-row">
+                <button mat-stroked-button color="primary" (click)="sendNewsLetter()" [disabled]="!newsletterForm.valid" type="submit">Publică</button> 
+            </div>
+        </form>
+    </div>
+</div>

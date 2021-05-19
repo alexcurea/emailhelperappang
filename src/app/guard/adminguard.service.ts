@@ -5,7 +5,7 @@ import { TokenStorageService } from './../service/token-storage.service';
 @Injectable({
   providedIn: 'root'
 })
-export class AdminGuardService implements CanActivate {
+export class AdminGuard implements CanActivate {
   constructor(
       private router: Router,
       private tokenStorageService: TokenStorageService

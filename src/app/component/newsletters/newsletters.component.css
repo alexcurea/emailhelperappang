@@ -1,0 +1,120 @@
+.full-width{
+    width:100%;
+}
+
+.newsletters-list{
+    width:50%;
+    min-width: 300px;
+    display:inline-block;
+    background-color: seagreen;
+}
+
+.main-container{
+    display:flex;
+    vertical-align: top!important;
+    width: 100%;
+    overflow: auto;
+    background-color: whitesmoke;
+}
+
+.newsletter-left{
+    width:50%;
+    display:inline-block;
+    min-width: 450px;
+}
+
+.title-form{
+    width:100%;
+    padding:10px;
+}
+
+.text-area{
+    height: 40vh;
+    max-height: 40vh;
+}
+
+
+.content-form{
+    width: 100%;
+    padding: 10px;
+}
+
+.panel-description{
+    float: right;
+    min-height: 30px!important;
+    text-align: right!important;
+}
+
+.expansion-panel{
+    width: 100% !important;
+}
+
+::ng-deep .mat-form-field mat-form-field-outline .mat-form-field-ripple{
+
+    color:black !important;
+}
+
+::ng-deep .ng-untouched .mat-form-field-outline-thick .mat-form-field-outline{
+
+    color:black !important;
+}
+
+::ng-deep .mat-form-field-outline-thick .mat-form-field-outline{
+
+    color:black !important;
+}
+
+::ng-deep .ng-dirty .ng-valid .ng-touched .mat-form-field-outline{
+
+    color:black !important;
+}
+
+::ng-deep .mat-form-field-outline{
+    color:black !important;
+}
+
+::ng-deep .mat-form-field-label{
+    color:black !important;
+}
+
+::ng-deep .ng-dirty .ng-valid .ng-touched .mat-form-field-label{
+
+    color:black !important;
+}
+
+::ng-deep .ng-invalid .mat-form-field-invalid .mat-form-field-outline{
+    color: #f44336!important;
+}
+
+::ng-deep .ng-invalid .mat-form-field-invalid .mat-form-field-label{
+    color: #f44336!important;
+}
+
+::ng-deep .ng-invalid .mat-form-field-invalid .mat-form-field-outline-thick .mat-form-field-outline{
+    color: #f44336!important;
+}
+
+.header{
+    padding: 10px;
+  }
+
+  .button-row{
+    padding: 10px;
+  }
+
+  ::ng-deep  .mat-stroked-button.mat-button-disabled.mat-button-disabled{
+    color:black !important;
+  }
+
+  .viewport{
+    height: 90vh;
+    width: 100%;
+  }
+
+.item{
+    width:100%!important;
+    display:inline-block;
+}
+
+
+
